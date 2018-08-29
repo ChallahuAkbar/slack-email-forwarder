@@ -24,7 +24,7 @@ const mailListener = new MailListener({
   tlsOptions: { rejectUnauthorized: false },
   mailbox: "INBOX", // mailbox to monitor
   // searchFilter: ["UNSEEN", "FLAGGED"], // the search filter being used after an IDLE notification has been retrieved
-  markSeen: false, // all fetched email willbe marked as seen and not fetched next time
+  markSeen: true, // all fetched email willbe marked as seen and not fetched next time
   fetchUnreadOnStart: true, // use it only if you want to get all unread email on lib start. Default is `false`,
   // mailParserOptions: {streamAttachments: true}, // options to be passed to mailParser lib.
   attachments: true, // download attachments as they are encountered to the project directory
@@ -33,13 +33,13 @@ const mailListener = new MailListener({
 
 mailListener.start();
 
-mailListener.on("server:connected", () => {
-  sendMessage('connected');
-});
+mailListener.on("server:connected", () => 
+  console.log('Connected to server.')
+);
 
-mailListener.on("server:disconnected", () => {
-  sendMessage('disconnected');
-});
+mailListener.on("server:disconnected", () => 
+  console.log('disconnected to server');
+);
 
 mailListener.on("error", error => 
   sendMessage(`Error encountered: \n ${error}`)
