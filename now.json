@@ -3,7 +3,7 @@
   "alias": "email-forwarder",
   "public": false,
   "files": [
-    "build/backend.js",
+    "build",
     "package.json"
   ]
 }

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "now-build": "echo 'Built on Travis CI'",
-    "now-start": "ls && ls build && node backend.js",
+    "now-start": "node build/backend.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Kyle Pfromer and Gernene Tan",
