@@ -1,4 +1,4 @@
-# slack-email-forworder
+# slack-email-forwarder
 
 This project forwards emails sent to the webteam@fairviewhs.org email to the #email channel in slack.
 
