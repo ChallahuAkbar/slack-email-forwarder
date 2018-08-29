@@ -38,7 +38,7 @@ mailListener.on("server:connected", () =>
 );
 
 mailListener.on("server:disconnected", () => 
-  console.log('disconnected to server');
+  console.log('disconnected to server')
 );
 
 mailListener.on("error", error => 
