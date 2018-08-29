@@ -15,7 +15,7 @@ deploy:
   #     all_branches: true
   #     master: false
   - provider: script
-    script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
+    script: now --token $NOW_TOKEN --no-verify && now alias --token $NOW_TOKEN --no-verify
     skip_cleanup: true
     on:
       master: true
