@@ -4,30 +4,27 @@ const babel = require('gulp-babel');
 const concat = require('gulp-concat');
 const del = require('del');
 const uglify = require('gulp-uglify');
-const Cache = require('gulp-file-cache');
+const testEnvJson = require('./test-env.json');
 
-const cache = new Cache();
+gulp.task('cleanDev', () => del('./dist'));
 
-gulp.task('compile', function () {
-  return gulp.src('./src/**/*.js') // your ES2015 code
-    .pipe(cache.filter()) // remember files
+gulp.task('compile', ['cleanDev'], function () {
+  return gulp.src('./src/**/*.js')
     .pipe(babel({ 
       presets: ['env'],
       plugins: ["transform-object-rest-spread", "transform-es2015-parameters"]
-    })) // compile new ones
-    .pipe(cache.cache()) // cache them
-    .pipe(gulp.dest('./dist')) // write them
+    }))
+    .pipe(gulp.dest('./dist'))
 });
 
-// gulp.task('watch', ['compile'], function () {
-//   const stream = nodemon({
-//     script: 'dist/app.js', // run ES5 code
-//     watch: 'src', // watch ES2015 code
-//     tasks: ['compile'] // compile synchronously onChange
-//   })
-
-//   return stream;
-// });
+gulp.task('watch', ['compile'], function () {
+  return nodemon({
+    script: 'dist/app.js', // run ES5 code
+    watch: 'src', // watch ES2015 code
+    tasks: ['compile'], // compile synchronously onChange
+    env: testEnvJson
+  });
+});
 
 gulp.task('clean', () => del('./build'));
 
