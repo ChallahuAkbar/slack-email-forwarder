@@ -2,3 +2,4 @@ node_modules/
 dist/
 build/
 .gulp-cache
+test-env.json
