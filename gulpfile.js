@@ -26,12 +26,3 @@ gulp.task('watch', ['compile'], function () {
     env: testEnvJson
   });
 });
-
-gulp.task('clean', () => del('./build'));
-
-gulp.task('build', ['clean'], () => {
-  return gulp.src('./src/**/*.js')
-    .pipe(babel(babelOptions))
-    .pipe(uglify())
-    .pipe(gulp.dest('./build'));
-});

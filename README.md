@@ -17,8 +17,10 @@ Then you want to create `test-env.json` for login credentials. Here is the templ
 }
 ```
 
+Gulp is used only for development
+
 To watch for file changes run `gulp watch`
 
-To build for production run `gulp build`
+Webpack is used only for production code
 
 Check for scripts in the `package.json` or `gulpfile.js`
