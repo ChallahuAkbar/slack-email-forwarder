@@ -10,18 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "@slack/client": "^4.5.0",
-    "mail-listener2-updated": "^0.3.3"
+    "mail-listener2-updated": "^0.3.3",
+    "node-slack-upload": "^1.2.1"
   },
   "devDependencies": {
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-es2015-parameters": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "del": "^3.0.0",
+    "dotenv": "^6.0.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^7.0.1",
     "gulp-concat": "^2.6.1",
-    "gulp-file-cache": "0.0.1",
     "gulp-nodemon": "^2.2.1",
     "gulp-uglify": "^3.0.1"
   }
