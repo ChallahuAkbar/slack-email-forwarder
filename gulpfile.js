@@ -1,19 +1,20 @@
 const gulp = require('gulp');
 const nodemon = require('gulp-nodemon');
 const babel = require('gulp-babel');
-const concat = require('gulp-concat');
 const del = require('del');
 const uglify = require('gulp-uglify');
 const testEnvJson = require('./test-env.json');
+
+const babelOptions = {
+  presets: ['env'],
+  plugins: ["transform-object-rest-spread", "transform-es2015-parameters"]
+};
 
 gulp.task('cleanDev', () => del('./dist'));
 
 gulp.task('compile', ['cleanDev'], function () {
   return gulp.src('./src/**/*.js')
-    .pipe(babel({ 
-      presets: ['env'],
-      plugins: ["transform-object-rest-spread", "transform-es2015-parameters"]
-    }))
+    .pipe(babel(babelOptions))
     .pipe(gulp.dest('./dist'))
 });
 
@@ -30,8 +31,7 @@ gulp.task('clean', () => del('./build'));
 
 gulp.task('build', ['clean'], () => {
   return gulp.src('./src/**/*.js')
-    .pipe(concat('index.js'))
-    .pipe(babel({ presets: ['env'] }))
+    .pipe(babel(babelOptions))
     .pipe(uglify())
     .pipe(gulp.dest('./build'));
 });
